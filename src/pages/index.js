@@ -4,12 +4,17 @@ import axios from 'axios'
 
 export default class IndexPage extends React.Component {
   currentDate = new Date()
-  state = {
-    title: "",
-    date: this.currentDate.toISOString().slice(0, 10),
-    coop: "",
-    winner: "",
-    noOfPlayers: "",
+  constructor(props) {
+    super(props)
+    const apiKey = localStorage.getItem('userApiKey')
+    this.state = {
+      apiKey,
+      title: "",
+      date: this.currentDate.toISOString().slice(0, 10),
+      coop: "",
+      winner: "",
+      noOfPlayers: "",
+    }
   }
 
   handleInputChange = event => {
@@ -19,6 +24,16 @@ export default class IndexPage extends React.Component {
     this.setState({
       [name]: value,
     })
+  }
+
+  handleStoreAPIKey = event => {
+    event.preventDefault()
+    const apiKey = event.target[0].value
+    localStorage.setItem('userApiKey', apiKey)
+    this.setState({
+      apiKey
+    })
+    console.log('Handling API key', apiKey)
   }
 
   handleSubmit = event => {
@@ -35,6 +50,34 @@ export default class IndexPage extends React.Component {
   }
 
   render() {
+    return this.state.apiKey ? this.renderForm() : this.renderAskForAPIKey()
+  }
+
+  renderAskForAPIKey() {
+    return (
+      <div>
+        <p>You need to supply an API key</p>
+        <br />
+        <br />
+        <p>Please register this device using your Boardgames Tracker API key</p>
+        <br />
+        <br />
+        <form onSubmit={this.handleStoreAPIKey}>
+          <label>API Key
+            <input 
+            type="text"
+            name="apiKey"
+            defaultValue="">
+            </input>
+          </label>
+          <button type="submit">Auth me!</button>
+        </form>
+      </div>
+    )
+
+  }
+
+  renderForm() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
