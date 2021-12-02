@@ -22,60 +22,65 @@ export default class IndexPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    alert(`You played ${this.state.title} on ${this.state.date}. ${this.state.winner} was the winner!`)
+    console.log(`You played ${this.state.title} on ${this.state.date}. ${this.state.winner} was the winner!`)
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Title
-          <input 
-          type="text"
-          name="title" 
-          value={this.state.title}
-          onChange={this.handleInputChange}/>
-        </label>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Title
+            <input 
+            type="text"
+            name="title" 
+            value={this.state.title}
+            onChange={this.handleInputChange}/>
+          </label>
+          <br />
+          <label>
+            Date
+            <input 
+            type="text"
+            name="date" 
+            value={this.state.date}
+            onChange={this.handleInputChange}/>
+          </label>
+          <br />
+          <label>
+            Co-op
+            <input 
+            type="text"
+            name="coop" 
+            value={this.state.coop}
+            onChange={this.handleInputChange}/>
+          </label>
+          <br />
+          <label>
+            Winner
+            <input 
+            type="text"
+            name="winner" 
+            value={this.state.winner}
+            onChange={this.handleInputChange}/>
+          </label>
+          <br />
+          <label>
+            Number of Players
+            <input 
+            type="text"
+            name="noOfPlayers" 
+            value={this.state.noOfPlayers}
+            onChange={this.handleInputChange}/>
+          </label>
+          <br />
+          <br />
+          <button type="submit">Submit</button>
+        </form>
         <br />
-        <label>
-          Date
-          <input 
-          type="text"
-          name="date" 
-          value={this.state.date}
-          onChange={this.handleInputChange}/>
-        </label>
-        <br />
-        <label>
-          Co-op
-          <input 
-          type="text"
-          name="coop" 
-          value={this.state.coop}
-          onChange={this.handleInputChange}/>
-        </label>
-        <br />
-        <label>
-          Winner
-          <input 
-          type="text"
-          name="winner" 
-          value={this.state.winner}
-          onChange={this.handleInputChange}/>
-        </label>
-        <br />
-        <label>
-          Number of Players
-          <input 
-          type="text"
-          name="noOfPlayers" 
-          value={this.state.noOfPlayers}
-          onChange={this.handleInputChange}/>
-        </label>
-        <br />
-        <br />
-        <button type="submit">Submit</button>
-      </form>
+        <b>Data preview</b>
+        <pre>{JSON.stringify(this.state, null, 2)}</pre>
+      </div>
     )
   }
 }
