@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: '/my-first-gatsby-site',
+  pathPrefix: '/boardgames-tracker',
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
     title: "My Gatsby Site",

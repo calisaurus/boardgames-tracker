@@ -4,7 +4,7 @@
 
 ## 🚀 Calisaurus Boardgames tracker
 
-Navigate to https://calisaurus.github.io/my-first-gatsby-site/ to input boardgames play records
+Navigate to https://calisaurus.github.io/boardgames-tracker/ to input boardgames play records
   
 
 
