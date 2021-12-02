@@ -1,5 +1,6 @@
 // Step 1: Import React
 import React from 'react'
+import axios from 'axios'
 
 export default class IndexPage extends React.Component {
   currentDate = new Date()
@@ -23,6 +24,8 @@ export default class IndexPage extends React.Component {
   handleSubmit = event => {
     event.preventDefault()
     console.log(`You played ${this.state.title} on ${this.state.date}. ${this.state.winner} was the winner!`)
+    const dataToSend = this.state
+    axios.post('https://32r96w1hxa.execute-api.eu-west-2.amazonaws.com/Prod/createPlayRecord', dataToSend)
   }
 
   render() {
