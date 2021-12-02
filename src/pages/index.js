@@ -24,7 +24,13 @@ export default class IndexPage extends React.Component {
   handleSubmit = event => {
     event.preventDefault()
     console.log(`You played ${this.state.title} on ${this.state.date}. ${this.state.winner} was the winner!`)
-    const dataToSend = this.state
+    const dataToSend = {
+      title: this.state.title,
+      date: this.state.date,
+      coop: this.state.coop,
+      winner: this.state.winner,
+      noOfPlayers: this.state.noOfPlayers,
+    }
     axios.post('https://32r96w1hxa.execute-api.eu-west-2.amazonaws.com/Prod/createPlayRecord', dataToSend)
   }
 
